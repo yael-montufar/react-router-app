@@ -11,35 +11,23 @@ const shopify = shopifyApi({
 });
 
 export async function handler(event: HandlerEvent) {
-  const { shop, hmac, timestamp } = event.queryStringParameters || {};
+  const { shop } = event.queryStringParameters || {};
 
-  if (!shop || !hmac) {
+  if (!shop) {
     return {
       statusCode: 400,
-      body: JSON.stringify({ error: 'Missing required parameters' })
+      body: JSON.stringify({ error: 'Missing shop parameter' })
     };
   }
 
-  try {
-    // Begin OAuth
-    const authPath = await shopify.auth.begin({
-      shop: shop,
-      callbackPath: '/api/auth/callback',
-      isOnline: false,
-    });
-
-    return {
-      statusCode: 302,
-      headers: {
-        'Location': authPath.destinationUrl
-      },
-      body: ''
-    };
-  } catch (error) {
-    console.error('Installation error:', error);
-    return {
-      statusCode: 500,
-      body: JSON.stringify({ error: 'Installation failed' })
-    };
-  }
+  // Redirect to the app settings page in Shopify Admin
+  const adminUrl = `https://admin.shopify.com/store/${shop.split('.')[0]}/settings/apps/app_installations/app/react-router-app`;
+  
+  return {
+    statusCode: 302,
+    headers: {
+      'Location': adminUrl
+    },
+    body: ''
+  };
 }
