@@ -2,7 +2,7 @@
 
 client_id = "8a68647e834ce2d7a7bfcf081631f43a"
 application_url = "https://react-router-app-1.netlify.app/"
-embedded = true
+embedded = false
 name = "react-router-app"
 handle = "react-router-app"
 

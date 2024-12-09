@@ -43,6 +43,13 @@ export function Layout({ children }: { children: React.ReactNode }) {
 }
 
 export default function App() {
+  // Check if we're in the auth flow
+  const isAuthFlow = window.location.pathname === '/api/auth';
+  
+  if (isAuthFlow) {
+    return <div>Authenticating...</div>;
+  }
+  
   return <Outlet />;
 }
 
