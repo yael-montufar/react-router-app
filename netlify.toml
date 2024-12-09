@@ -8,6 +8,13 @@
   publish = "build"
 
 [[redirects]]
+  from = "/"
+  to = "/.netlify/functions/index"
+  status = 200
+  force = true
+  conditions = {Query = ["shop", "hmac"]}
+
+[[redirects]]
   from = "/api/auth"
   to = "/.netlify/functions/auth"
   status = 200
