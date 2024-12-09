@@ -1,4 +1,4 @@
-import { HandlerEvent } from "@netlify/functions";
+import type{ HandlerEvent } from "@netlify/functions";
 import { shopifyApi, LATEST_API_VERSION } from '@shopify/shopify-api';
 
 const shopify = shopifyApi({
