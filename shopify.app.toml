@@ -1,0 +1,20 @@
+# Learn more about configuring your app at https://shopify.dev/docs/apps/tools/cli/configuration
+
+client_id = "8a68647e834ce2d7a7bfcf081631f43a"
+application_url = "https://example.com/"
+embedded = true
+name = "react-router-app"
+handle = "react-router-app"
+
+[webhooks]
+api_version = "2024-10"
+
+[auth]
+redirect_urls = [ "https://example.com/api/auth" ]
+
+[pos]
+embedded = false
+
+[build]
+include_config_on_deploy = true
+dev_store_url = "preview-store-a.myshopify.com"
